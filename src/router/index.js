@@ -1,8 +1,15 @@
 import {createRouter, createWebHistory} from 'vue-router'
-import MainView from '@/views/MainView.vue'
 
 const routes = [
-  MainView
+  {
+    path: "/",
+    name: "Home",
+    alias: "/home",
+    component: () => import('@/views/MainView.vue'),
+    meta: {
+      title: "",
+    },
+  }
 ];
 
 const router = createRouter({
