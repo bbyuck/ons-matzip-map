@@ -1,26 +1,31 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <v-app id="inspire">
+    <router-view>
+      <app-bar :menuList="menuList"></app-bar>
+      <main-view></main-view>
+    </router-view>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import MainView from '@/views/MainView.vue'
+import AppBar from '@/components/AppBar.vue'
 
 export default {
   name: 'App',
+
   components: {
-    HelloWorld
-  }
+    MainView, AppBar
+  },
+
+  data: () => ({
+    // menu -> db조회로 변경
+    menuList: [
+      'Dashboard',
+      'Messages',
+      'Profile',
+      'Updates',
+    ],
+  }),
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
