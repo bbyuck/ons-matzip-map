@@ -8,7 +8,7 @@
     </div>
     <v-spacer></v-spacer>
     <v-btn icon @click="$emit('toggleBtnClick', true)">
-      <v-icon color="red" size="30">mdi-heart</v-icon>
+      <v-icon color="black" size="30">mdi-noodles</v-icon>
     </v-btn>
   </v-app-bar>
 </template>
