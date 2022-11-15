@@ -1,8 +1,11 @@
 <template>
   <v-app id="inspire">
     <router-view>
-      <app-bar :menuList="menuList"></app-bar>
-      <v-navigation-drawer>
+      <app-bar :menuList="menuList"
+               @toggle-btn-click="drawer=!drawer"></app-bar>
+      <v-navigation-drawer  location="right" 
+                            v-model="drawer"
+                            temporary>
         <v-list rounded="lg">
           <v-list-item
             v-for="n in 5"
@@ -44,9 +47,7 @@ export default {
   },
 
   data: () => ({
-    appWidth: undefined,
-    appHeight: undefined,
-    // menu -> db조회로 변경
+    drawer: false,
     menuList: [
       "Dashboard",
       "Messages",
@@ -55,17 +56,8 @@ export default {
     ],
   }),
   methods: {
-    appResizeHandler() {
-      this.appWidth = window.innerWidth;
-      this.appHeight = window.innerHeight;
+    test() {
     }
-  },
-  /*
-  mounted: () => {
-    // console.log("width : " + window.innerWidth);
-    // console.log("height : " + window.innerHeight);
-    window.addEventListener("resize", this.appResizeHandler);
   }
-  */
 }
 </script>
