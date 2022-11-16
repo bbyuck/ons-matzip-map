@@ -1,7 +1,7 @@
 <template>
   <div>
-    <v-navigation-drawer  location="right" 
-                          v-model="drawer"
+    <v-navigation-drawer  location="right"
+                          v-model="commonStore.drawer"
                           temporary>
       <v-list rounded="lg">
         <v-list-item
@@ -30,8 +30,15 @@
 </template>
 
 <script>
+import { useCommonStore } from "@/store/common"
+
 export default {
-  props: ["drawer"]
+  data: () => ({
+    commonStore: undefined
+  }),
+  created() {
+    this.commonStore = useCommonStore();
+  }
 }
 </script>
 

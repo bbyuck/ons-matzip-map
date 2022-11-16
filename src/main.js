@@ -6,10 +6,12 @@ import { loadFonts } from "./plugins/webfontloader"
 import LoadScript from "vue-plugin-load-script"
 
 import "@/assets/css/common.css"
+import { createPinia } from 'pinia'
 
 loadFonts()
 
 createApp(App)
+  .use(createPinia())
   .use(vuetify)
   .use(router)
   .use(LoadScript)

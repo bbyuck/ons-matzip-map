@@ -7,20 +7,26 @@
       </router-link>
     </div>
     <v-spacer></v-spacer>
-    <v-btn icon @click="$emit('toggleBtnClick', true)">
+    <v-btn icon @click="commonStore.toggleDrawer">
       <v-icon color="black" size="30">mdi-noodles</v-icon>
     </v-btn>
   </v-app-bar>
 </template>
 
 <script>
+import { useCommonStore } from "@/store/common"
+
 export default {
   props: ['menuList'],
   data: () => ({
-    logo: require("@/assets/img/CJONS_CI.png")
+    logo: require("@/assets/img/CJONS_CI.png"),
+    commonStore: undefined
   }),
   methods: {
     
+  },
+  created() {
+    this.commonStore = useCommonStore();
   }
 }
 </script>

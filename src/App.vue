@@ -1,9 +1,8 @@
 <template>
   <v-app id="inspire">
     <router-view>
-      <app-bar :menuList="menuList"
-               @toggle-btn-click="drawer=!drawer"></app-bar>
-      <side-bar :drawer="drawer"></side-bar>
+      <app-bar :menuList="menuList"></app-bar>
+      <side-bar></side-bar>
       <main-view></main-view>
     </router-view>
   </v-app>
@@ -17,13 +16,11 @@ import { loadScript } from "vue-plugin-load-script"
 
 export default {
   name: "App",
-
   components: {
     MainView, AppBar, SideBar
   },
 
   data: () => ({
-    drawer: false,
     menuList: [
       "Dashboard",
       "Messages",
@@ -31,18 +28,16 @@ export default {
       "Updates",
     ],
   }),
-  methods: {
-    test() {
-    }
-  },
+  methods: {},
   created() {
     // external js
     loadScript("https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=g4ov44vyd8")
       .then(() => {
+        console.log("네이버 지도 API 로드 완료");
       })
       .catch(() => {
         // Failed to fetch script
       });
-  }
+  },
 }
 </script>
