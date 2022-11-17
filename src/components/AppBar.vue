@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar elevation="1" extended extension-height="13" absolute>
+  <v-app-bar elevation="1" :absolute="true">
     <div class="border-logo">
       <!-- CJ ONS 로고 -->
       <router-link to="home">
@@ -7,36 +7,50 @@
       </router-link>
     </div>
     <v-spacer></v-spacer>
-    <v-btn icon @click="commonStore.toggleDrawer">
-      <v-icon color="black" size="30">mdi-noodles</v-icon>
-    </v-btn>
+
+    <!-- select box -->
+    <v-select
+      prepend-icon="mdi-map"
+      class="select-site"
+      label="Site"
+      :items="siteStore.getNames"
+      variant="underlined"
+    ></v-select>
   </v-app-bar>
 </template>
 
 <script>
 import { useCommonStore } from "@/store/common"
+import { useSiteStore } from "@/store/site"
 
 export default {
   props: ['menuList'],
   data: () => ({
     logo: require("@/assets/img/CJONS_CI.png"),
-    commonStore: undefined
+    commonStore: undefined,
+    siteStore: undefined
   }),
   methods: {
     
   },
   created() {
     this.commonStore = useCommonStore();
+    this.siteStore = useSiteStore();
   }
 }
 </script>
 
 <style scoped>
 
-.border-logo {
-  width: 15em;
+.select-site {
   margin: 0.8em;
   margin-top: 1.5em;
+}
+
+.border-logo {
+  width: 10em;
+  margin: 0.8em;
+  margin-top: 1.2em;
 }
 
 .logo {
