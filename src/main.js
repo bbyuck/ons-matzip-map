@@ -8,6 +8,7 @@ import LoadScript from "vue-plugin-load-script"
 import "@/assets/css/common.css"
 import { createPinia } from 'pinia'
 import { loadScript } from "vue-plugin-load-script"
+import mitt from 'mitt'
 
 
 loadFonts()
@@ -15,16 +16,19 @@ loadFonts()
 // external js
 loadScript("https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=g4ov44vyd8")
 .then(() => {
-  console.log(foodStore.selectedFoodGroup.name + " 지도 로드 완료!");
 })
 .catch(() => {
   // Failed to fetch script
 });
 
+const emitter = mitt();
 
-createApp(App)
-.use(createPinia())
-.use(vuetify)
-.use(router)
-.use(LoadScript)
-.mount("#app")
+
+const app = createApp(App);
+
+app.use(createPinia());
+app.use(vuetify);
+app.use(router);
+app.use(LoadScript);
+app.config.globalProperties.emitter = emitter;
+app.mount("#app");

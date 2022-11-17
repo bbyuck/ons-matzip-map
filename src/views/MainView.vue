@@ -8,7 +8,7 @@
               <div v-if="i == j || j == i + 1">
                 <v-card height="100">
                   <v-btn width="100%" height="100"
-                    @click="btnAction(foodCell.cd)">
+                    @click="btnAction(foodCell)">
                     {{ foodCell.name }}
                   </v-btn>
                 </v-card>
@@ -33,16 +33,12 @@ import { useSiteStore } from "@/store/site"
       siteStore: undefined
     }),
     methods: {
-      btnAction(btnId) {
+      btnAction(foodGroup) {
         // 사이트별 분기
-        // let mapOptions = {
-        //   center: new naver.maps.LatLng(this.siteStore.selectedSite.posX, this.siteStore.selectedSite.posY),
-        //   zoom: 15
-        // };
-        // new naver.maps.Map('map', mapOptions);
-
         // 음식 group별 분기
+        this.foodStore.selectFoodGroup(foodGroup);
         this.commonStore.toggleDialog();
+        this.emitter.emit("openMap")
       }
     },
     created() {

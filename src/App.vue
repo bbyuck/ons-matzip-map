@@ -1,7 +1,7 @@
 <template>
   <v-app id="inspire">
     <router-view>
-      <app-bar :menuList="menuList"></app-bar>
+      <app-bar></app-bar>
       <map-dialog></map-dialog>
       <main-view></main-view>
     </router-view>
@@ -20,12 +20,7 @@ export default {
   },
 
   data: () => ({
-    menuList: [
-      "Dashboard",
-      "Messages",
-      "Profile",
-      "Updates",
-    ],
+
   }),
   methods: {},
 }

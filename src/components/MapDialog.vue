@@ -10,21 +10,23 @@
         <v-card>
           <v-toolbar
             dark
-            color="primary"
+            color="#00C73C"
           >
             <v-btn
               icon
               dark
               @click="commonStore.toggleDialog"
+              color="#FFFFFF"
             >
               <v-icon>mdi-close</v-icon>
             </v-btn>
-            <v-toolbar-title>{{ siteStore.selectedSite.name }}</v-toolbar-title>
+            <v-toolbar-title style="color: #FFFFFF">{{ foodStore.selectedFoodGroup.name }}</v-toolbar-title>
             <v-spacer></v-spacer>
             <v-toolbar-items>
               <v-btn
                 variant="text"
-                @click="commonStore.dialog = false"
+                @click="renderMap"
+                color="#FFFFFF"
               >
                 버튼
               </v-btn>
@@ -62,6 +64,16 @@ export default {
     this.commonStore = useCommonStore();
     this.foodStore = useFoodStore();
     this.siteStore = useSiteStore();
+    // this.emitter.on("openMap", this.renderMap);
+  },
+  methods: {
+    renderMap() {
+      let mapOptions = {
+        center: new naver.maps.LatLng(this.siteStore.selectedSite.posX, this.siteStore.selectedSite.posY),
+        zoom: 15
+      };
+      new naver.maps.Map('map', mapOptions);
+    }
   },
 }
 </script>
