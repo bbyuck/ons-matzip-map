@@ -43,12 +43,13 @@ export default {
 <style scoped>
 
 .select-site {
+  width: 16em;
   margin: 0.8em;
   margin-top: 1.5em;
 }
 
 .border-logo {
-  width: 10em;
+  width: 8em;
   margin: 0.8em;
   margin-top: 1.2em;
 }
