@@ -34,11 +34,7 @@
           </v-toolbar>
           <v-container fluid class="grow d-flex flex-column flex-nowrap">
             <v-row class="shirink">
-              <v-col cols="12">
-                <v-card>
-                  <div id="map" style="width:100%; height:60vh"></div>
-                </v-card>
-              </v-col>
+              <div id="map" style="width:100%; height:75vh"></div>
             </v-row>
           </v-container>
         </v-card>
