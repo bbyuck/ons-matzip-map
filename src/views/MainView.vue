@@ -24,20 +24,31 @@
 <script>
 import { useCommonStore } from "@/store/common"
 import { useFoodStore } from "@/store/food"
+import { useSiteStore } from "@/store/site"
+
   export default {
     data: () => ({
       commonStore: undefined,
-      foodStore: undefined
+      foodStore: undefined,
+      siteStore: undefined
     }),
     methods: {
       btnAction(btnId) {
-        // 버튼 ID별로 분기
-        this.commonStore.toggleDrawer();
+        // 사이트별 분기
+        // let mapOptions = {
+        //   center: new naver.maps.LatLng(this.siteStore.selectedSite.posX, this.siteStore.selectedSite.posY),
+        //   zoom: 15
+        // };
+        // new naver.maps.Map('map', mapOptions);
+
+        // 음식 group별 분기
+        this.commonStore.toggleDialog();
       }
     },
     created() {
       this.commonStore = useCommonStore();
       this.foodStore = useFoodStore();
+      this.siteStore = useSiteStore();
     },
   }
 </script>

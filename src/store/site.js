@@ -5,7 +5,7 @@ export const useSiteStore = defineStore("site", {
     siteInfo: [
       {
         siteCd: "SI-00",
-        name: "올리브네트웍스 본사",
+        name: "트윈시티 남산",
         posX: 37.551020,
         posY: 126.972900
       },
@@ -42,19 +42,12 @@ export const useSiteStore = defineStore("site", {
     ],
     selectedSite: {
       siteCd: "SI-00",
-      name: "올리브네트웍스 본사",
+      name: "트윈시티 남산",
       posX: 37.551020,
       posY: 126.972900
     }
   }),
   getters: {
-    getNames() {
-      let nameList = []
-      for (let i in this.siteInfo) {
-        nameList.push(this.siteInfo[i].name);
-      }
-      return nameList;
-    },
     getPos() {
       let pos = {};
       for (let i in this.siteInfo) {
@@ -67,8 +60,8 @@ export const useSiteStore = defineStore("site", {
     }
   },
   actions: {
-    selectSite(siteCd) {
-      this.selectedSiteCd = siteCd;
+    selectSite(selectedSite) {
+      this.selectedSite = selectedSite;
     }
   }
 })

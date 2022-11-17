@@ -2,7 +2,7 @@
   <v-app id="inspire">
     <router-view>
       <app-bar :menuList="menuList"></app-bar>
-      <map-bar></map-bar>
+      <map-dialog></map-dialog>
       <main-view></main-view>
     </router-view>
   </v-app>
@@ -11,13 +11,12 @@
 <script>
 import MainView from "@/views/MainView.vue"
 import AppBar from "@/components/AppBar.vue"
-// import SideBar from "@/components/SideBar.vue"
-import MapBar from "@/components/MapBar.vue"
+import MapDialog from "@/components/MapDialog.vue"
 
 export default {
   name: "App",
   components: {
-    MainView, AppBar, MapBar
+    MainView, AppBar, MapDialog
   },
 
   data: () => ({
