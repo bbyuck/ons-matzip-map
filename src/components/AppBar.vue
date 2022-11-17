@@ -13,8 +13,11 @@
       prepend-icon="mdi-map"
       class="select-site"
       label="Site"
-      :items="siteStore.getNames"
+      :items="siteStore.siteInfo"
+      :item-title="'name'"
+      :item-value="'siteCd'"
       variant="underlined"
+      v-model="siteStore.selectedSite"
     ></v-select>
   </v-app-bar>
 </template>
@@ -28,10 +31,10 @@ export default {
   data: () => ({
     logo: require("@/assets/img/CJONS_CI.png"),
     commonStore: undefined,
-    siteStore: undefined
+    siteStore: undefined,
   }),
   methods: {
-    
+
   },
   created() {
     this.commonStore = useCommonStore();
@@ -43,13 +46,13 @@ export default {
 <style scoped>
 
 .select-site {
-  width: 16em;
+  width: 60%;
   margin: 0.8em;
   margin-top: 1.5em;
 }
 
 .border-logo {
-  width: 8em;
+  width: 15%;
   margin: 0.8em;
   margin-top: 1.2em;
 }

@@ -40,6 +40,12 @@ export const useSiteStore = defineStore("site", {
         posY: 126.972900
       }
     ],
+    selectedSite: {
+      siteCd: "SI-00",
+      name: "올리브네트웍스 본사",
+      posX: 37.551020,
+      posY: 126.972900
+    }
   }),
   getters: {
     getNames() {
@@ -48,9 +54,21 @@ export const useSiteStore = defineStore("site", {
         nameList.push(this.siteInfo[i].name);
       }
       return nameList;
+    },
+    getPos() {
+      let pos = {};
+      for (let i in this.siteInfo) {
+        if (this.selectedSiteCd == this.siteInfo[i].siteCd) {
+          pos.posX = this.siteInfo[i].posX;
+          pos.posY = this.siteInfo[i].posY;
+        }
+      }
+      return pos;
     }
   },
   actions: {
-
+    selectSite(siteCd) {
+      this.selectedSiteCd = siteCd;
+    }
   }
 })
